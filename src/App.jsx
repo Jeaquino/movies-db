@@ -1,14 +1,14 @@
-import SideBar from './components/SideBar';
+// import SideBar from './components/SideBar';
 import './assets/css/app.css'
-import ContentWrapper from './components/ContentWrapper';
+// import ContentWrapper from './components/ContentWrapper';
+import ContadorF from './components/ContadorF';
 
 function App() {
 
   return (
     <>
     <div id="wrapper">
-    <SideBar/>
-    <ContentWrapper/>
+    <ContadorF/>
     </div>
     </>
   )
