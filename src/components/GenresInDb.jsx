@@ -1,17 +1,6 @@
 import BoxGenre from "./BoxGenre";
 import { useState, useEffect } from "react";
 const GenresInDb = () => {
-  // const genres = [
-  //   "Acción",
-  //   "Aventura",
-  //   "Ciencia Ficción",
-  //   "Comedia",
-  //   "Documental",
-  //   "Drama",
-  //   "Fantasia",
-  //   "Infantiles",
-  //   "Musical",
-  // ];
   const [genres, setGenres] = useState([]);
 
   const getGenres = async () => {
@@ -24,7 +13,7 @@ const GenresInDb = () => {
       }
 
       const genres = await response.json();
-      console.log("Respuesta de la API:", genres);
+      console.log("Respuesta de la API:", genres.data);
 
       setGenres(genres.data);
     } catch (error) {
