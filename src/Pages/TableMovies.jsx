@@ -7,7 +7,7 @@ const TableMovies = () => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/movies");
+      const response = await fetch("http://localhost:3000/api/movies?association=si");
 
       if (!response.ok) {
         console.log("Error en la respuesta de la API");
@@ -17,6 +17,16 @@ const TableMovies = () => {
       const movies = await response.json();
       console.log("Respuesta de la API:", movies);
 
+      movies.data.forEach((movie) => {
+        movie.genres && movie.genres.name ? movie.genero = movie.genres.name : movie.genero = "Sin genero";
+        delete movie.genres;
+        delete movie.actors_in_movie;
+        delete movie.genre_id;
+      });
+
+      console.log("Array modificado: ",movies.data);
+      
+    
       setMovies(movies.data);
       setIsLoading(false);
     } catch (error) {
@@ -28,7 +38,18 @@ const TableMovies = () => {
     getMovies();
   }, []);
 
-  return <>{isLoading ? <h1>Loading...</h1> : <TableData data={movies} />}</>;
+  return <>{isLoading ? <h1>Loading...</h1> 
+    : <TableData 
+        data={movies} 
+        title={"Tabla de Peliculas"}
+        urlCreate="CreateMovie" 
+        urlEdit="EditMovie" 
+        urlDelete="deleteMovie" 
+        urlDetail="DetailMovie"
+        />
+
+        }
+        </>;
 };
 
 export default TableMovies;
