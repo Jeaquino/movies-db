@@ -44,7 +44,7 @@ const TableMovies = () => {
         title={"Tabla de Peliculas"}
         urlCreate="CreateMovie" 
         urlEdit="EditMovie" 
-        urlDelete="deleteMovie" 
+        urlDelete="http://localhost:3000/api/movies/deleteMovie" 
         urlDetail="DetailMovie"
         />
 

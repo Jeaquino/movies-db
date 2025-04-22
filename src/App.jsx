@@ -4,7 +4,7 @@ import SideBar from "./components/SideBar";
 import { Routes, Route } from "react-router-dom";
 import TableMovies from "./Pages/TableMovies";
 import MovieDetail from "./Pages/Movies/MovieDetail";
-import FormCreate from "./Pages/Movies/FormCreate";
+import MovieFormCreate from "./Pages/Movies/MovieFormCreate";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="/Charts" element={<h1>Charts</h1>} />
           <Route path="/Tables" element={<TableMovies />} />
           <Route path="/Tables/DetailMovie/:id" element={<MovieDetail />} />
-          <Route path="/Tables/CreateMovie" element={<FormCreate />} />
+          <Route path="/Tables/CreateMovie" element={<MovieFormCreate />} />
           <Route path="/Tables/EditMovie/:id" element={<h1>Edit</h1>} />
         </Routes>
       </div>
