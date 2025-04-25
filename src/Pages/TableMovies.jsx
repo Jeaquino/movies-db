@@ -4,7 +4,7 @@ import TableData from "../components/TableData";
 const TableMovies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const getMovies = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/movies?association=si");

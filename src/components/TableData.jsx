@@ -5,12 +5,9 @@ import Button from "react-bootstrap/Button";
 import "../assets/css/TableData.css";
 
 function TableData({ data, title, urlCreate, urlEdit, urlDelete, urlDetail }) {
-  const modelDelete = async (e) => {
-    
+  
+  const modelDelete = async (e, id) => {  
    try{
-    const {value} = e.target;
-    const id = value;
-    console.log("id",id);
     
     const success = confirm("¿Estás seguro de que deseas eliminar esta película ?");
     if (!success) {
@@ -34,6 +31,7 @@ function TableData({ data, title, urlCreate, urlEdit, urlDelete, urlDetail }) {
     const data = await response.json();
     console.log("Respuesta de la API:", data);
     window.location.reload();
+    
    }catch (error) {
     console.log(error);
    } 
@@ -73,13 +71,14 @@ function TableData({ data, title, urlCreate, urlEdit, urlDelete, urlDetail }) {
                     <Link to={`${urlEdit}/${movie.id}`}>
                       <Button variant="warning"><i className="fa-solid fa-pen-to-square"></i></Button>
                     </Link>
-                    <Button variant="danger" onClick={modelDelete} value={movie.id}><i className="fa-solid fa-trash"></i></Button>
+                    <Button variant="danger" onClick={(e) => modelDelete(e,movie.id)}><i className="fa-solid fa-trash"></i></Button>
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
+        {}
       </section>
     </>
   );
