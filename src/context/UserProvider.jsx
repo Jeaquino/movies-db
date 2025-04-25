@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 const UserProvider = ({ children }) => {
-  const user = {
-    name: "Victor",
-    surname: "Gonzalez",
-    age: 25,
-    logged: false,
-    modo: "dark"
-  };
+  const user = {};
 
   const [userData, setUserData] = useState(user);
 

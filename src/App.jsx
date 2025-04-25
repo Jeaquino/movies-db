@@ -10,8 +10,8 @@ import { useContext } from "react";
 import Login from "./Pages/Login";
 
 function App() {
-  const { userData } = useContext(UserContext);
-  const { logged, name, surname } = userData;
+  const { userData,login } = useContext(UserContext);
+  const { logged, modo} = userData;
 
 
   return (
@@ -19,13 +19,13 @@ function App() {
       <div id="wrapper">
         {!logged ? (
           <>
-            <Login />
+            <Login setLogin={login}/>
           </>
         ) : (
           <>
             <SideBar />
             <Routes>
-              <Route path="/" element={<ContentWrapper />} />
+              <Route path="/" element={<ContentWrapper theme={modo}/>} />
               <Route path="/Pages" element={<h1>Page</h1>} />
               <Route path="/Charts" element={<h1>Charts</h1>} />
               <Route path="/Tables" element={<TableMovies />} />
@@ -33,9 +33,6 @@ function App() {
               <Route path="/Tables/CreateMovie" element={<MovieFormCreate />} />
               <Route path="/Tables/EditMovie/:id" element={<h1>Edit</h1>} />
             </Routes>
-            <div id="content" className="d-flex flex-column flex-fill">
-              {`${name}  ${surname}`}
-            </div>
           </>
         )}
       </div>
